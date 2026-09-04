@@ -1,0 +1,42 @@
+BEGIN
+
+    DISPLAY "Weekly Tax Withholding Calculator"
+
+    DECLARE weeklyIncome AS REAL NUMBER
+    DECLARE taxRate AS REAL NUMBER
+    DECLARE taxWithholding AS REAL NUMBER
+    DECLARE takeHomePay AS REAL NUMBER
+
+    REPEAT
+        ASK the customer to enter thier weekly income
+
+        IF the entry is not a number THEN
+            DISPLAY "Invalid entry. Please enter a number I.E. 1200."
+        ELSE IF weeklyIncome is less than 0 THEN
+            DISPLAY "Income cannot be a negative number. Please enter weekly income."
+        END IF
+
+    UNTIL weeklyIncome is a number greater than or equal to 0
+
+    IF weeklyIncome is less than $500 THEN
+        SET taxRate = 0.10
+
+    ELSE IF weeklyIncome is less than $1500 THEN
+        SET taxRate = 0.15
+
+    ELSE IF weeklyIncome is less than $2500 THEN
+        SET taxRate = 0.20
+
+    ELSE
+        SET taxRate = 0.30
+    END IF
+
+    CALCULATE taxWithholding = weeklyIncome * taxRate
+    CALCULATE takeHomePay = weeklyIncome - taxWithholding
+
+    DISPLAY weeklyIncome
+    DISPLAY taxRate as a percentage
+    DISPLAY taxWithholding
+    DISPLAY takeHomePay
+
+END
